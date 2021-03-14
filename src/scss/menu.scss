@@ -1,0 +1,44 @@
+@import './settings.scss';
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $color-dark-grayish-blue;
+    padding: 12px;
+    
+    button {
+        color: $color-dark-grayish-blue;
+    }
+
+
+
+    .filter {
+
+        &--selected {
+            color: $color-bright-blue;
+        }
+
+        
+    }
+
+    @media (max-width: $break-point) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &__filters {
+            order: 10;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 24px 0;
+        }
+
+        &__status, &__actions {
+            width: 50%;
+        }
+
+    }
+}

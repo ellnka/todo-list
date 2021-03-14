@@ -1,0 +1,32 @@
+@import './settings.scss';
+
+
+.light-theme {
+
+    .header {
+        &__theme-btn {
+            background: url('./images/icon-moon.svg') no-repeat;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px;
+
+    &__title {
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+        font-size: 32px;
+        letter-spacing: 0.5em;
+    }
+
+    &__theme-btn {
+        width: 40px;
+        height: 40px;
+        background: url('./images/icon-sun.svg') no-repeat;
+        cursor: pointer;
+    }
+}

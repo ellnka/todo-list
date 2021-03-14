@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+$mobile-width: 375px;
+$desktop-width: 1440px;
+$desktop-content-width: 600px;
+
+$color-bright-blue: hsl(220, 98%, 61%);
+$color-check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+$color-very-light-gray: hsl(0, 0%, 98%);
+$color-very-light-grayish-blue: hsl(236, 33%, 92%);
+$color-light-grayish-blue: hsl(233, 11%, 84%);
+$color-dark-grayish-blue: hsl(236, 9%, 61%);
+$color-very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+$color-very-dark-blue: hsl(235, 21%, 11%);
+$color-very-dark-desaturated-blue: hsl(235, 24%, 19%);
+$color-light-grayish-blue: hsl(234, 39%, 85%);
+$color-light-grayish-blue-hover: hsl(236, 33%, 92%);
+$color-dark-grayish-blue: hsl(234, 11%, 52%);
+$color-light-very-dark-grayish: hsl(233, 14%, 35%);
+$color-light-very-dark-grayish-blue: hsl(237, 14%, 26%);
+
+$font-size: 18px;
+$font-family: 'Josefin Sans' , sans-serif;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$break-point: 768px;
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+    font-weight: $font-weight-regular; 
+    font-size: $font-size; 
+}
+
+html {
+    min-height:100%;
+    height: 100%;
+    position:relative;
+}
+
+body {
+    min-height:100%;
+    height: 100%;
+    background-color: $color-very-dark-blue;
+    background-image: url('./images/bg-mobile-dark.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    color: $color-very-light-gray;
+
+    @media (min-width: $break-point){
+        background-image: url('./images/bg-desktop-dark.jpg');
+    }
+}
+
+button, input {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: $font-family;
+    font-weight: $font-weight-regular; 
+    font-size: $font-size;
+}
+
+button, button:hover, button:focus, button:active {
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+	display: none;
+    box-sizing: border-box; 
+}
+
+label {
+    float: left;
+  }
+
+
+
+.light-theme {
+    background-color: $color-very-light-gray;
+    background-image: url('./images/bg-mobile-light.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    color: $color-very-light-gray;
+
+    @media (min-width: $break-point){
+        background-image: url('./images/bg-desktop-dark.jpg');
+    }
+
+    .header {
+        &__theme-btn {
+            background: url('./images/icon-moon.svg') no-repeat;
+        }
+    }
+}
+
+
+.content {
+    width: 100%;
+    max-width: $desktop-width;
+    min-width: $mobile-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media (min-width: $break-point){
+        width: $desktop-content-width;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px;
+
+    &__title {
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+        font-size: 32px;
+        letter-spacing: 0.5em;
+    }
+
+    &__theme-btn {
+        width: 40px;
+        height: 40px;
+        background: url('./images/icon-sun.svg') no-repeat;
+    }
+}
+
+.list {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    list-style-type: none;
+
+    &-wrapper {
+        background-color: $color-very-dark-desaturated-blue;
+        border-radius: 10px;
+        margin-bottom: 24px;
+        width: 100%;
+        padding: 12px 0;
+        box-shadow: 5px 25px 50px black;
+    }
+
+    
+
+    .new-task {
+        border-radius: 10px;
+        height: 50px;
+        width: 100%;
+        background-color: $color-very-dark-desaturated-blue; 
+        border: none;
+        color: $color-very-light-gray;
+        font-size: $font-size;
+        font-family: $font-family;
+        padding: 24px 12px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box; 
+    }
+
+    .task {
+        min-height: 24px;
+        width: 100%; 
+        padding: 24px 12px;
+        border-bottom: 1px solid $color-very-dark-grayish-blue;
+        background-color: $color-very-dark-desaturated-blue;
+        box-sizing: border-box; 
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        &__label {
+            font-size: $font-size;
+            line-height: 24px;
+            padding-left: 50px;
+        }
+
+        &__toggle {
+            display: block;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            text-indent: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 50%;
+            border-width: 2px;
+
+            &:before {
+                content: '';
+                width: 24px;
+                height: 24px;
+                border: 2px solid $color-very-dark-grayish-blue;
+                border-radius: 50%;
+                background-color: transparent;
+                position: absolute;
+                top: 20px;
+                left: 16px;
+            }
+
+            &:hover {
+                &:before {
+                    background: $color-check-bg;
+                    border: none;
+                }
+
+                &:after {
+                    opacity: 1;
+                    background-image: none;
+                    background-color: $color-very-dark-desaturated-blue;
+                    border-radius: 50%;
+                    top: 21px;
+                    left: 17px;
+                }
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                position: absolute;
+                width: 22px;
+                height: 22px;
+            
+                top: 24px;
+                left: 20px;
+                
+        
+                opacity: 0;
+                
+                background-image: url('./images/icon-check.svg');
+                background-repeat: no-repeat;
+                background-size: 16px 16px;
+                background-position: center center;
+                input[type=checkbox]:checked + & {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $color-dark-grayish-blue;
+    padding: 12px 12px 0 12px;
+    
+    button {
+        color: $color-dark-grayish-blue;
+    }
+
+    .filter {
+
+        &--selected {
+            color: $color-bright-blue;
+        }
+    }
+}
+
+input[type=checkbox]:checked + .task__toggle:after {
+    opacity: 1;    
+}
+
+input[type=checkbox]:checked + .task__toggle:before {
+    background: $color-check-bg;
+    border: 2px solid $color-check-bg;
+    
+}
+
+
+
+
+
+
+
+
+
+
+.padding {
+    &-leader {
+        padding-top: 24px;
+        &--xsmall {
+            padding-top: 12px;
+        }
+        &--small {
+            padding-top: 16px;
+        }
+        &--large {
+            padding-top: 32px;
+        }
+        &--xlarge {
+            padding-top: 48px;
+        }
+    }
+
+    &-trailer {
+        padding-bottom: 24px;
+        &--xsmall {
+            padding-bottom: 12px;
+        }
+        &--small {
+            padding-bottom: 16px;
+        }
+        &--large {
+            padding-bottom: 32px;
+        }
+        &--xlarge {
+            padding-bottom: 48px;
+        }
+    }
+
+    &-toleft {
+        padding-left: 24px;
+        &--xsmall {
+            padding-left: 12px;
+        }
+        &--small {
+            padding-left: 16px;
+        }
+        &--large {
+            padding-left: 32px;
+        }
+        &--xlarge {
+            padding-left: 48px;
+        }
+    }
+
+    &-toright {
+        padding-right: 24px;
+        &--xsmall {
+            padding-right: 12px;
+        }
+        &--small {
+            padding-right: 16px;
+        }
+        &--large {
+            padding-right: 32px;
+        }
+        &--xlarge {
+            padding-right: 48px;
+        }
+    }
+
+}
+
+
+.margin {
+    &-leader {
+        margin-top: 24px;
+        &--xsmall {
+            margin-top: 12px;
+        }
+        &--small {
+            margin-top: 16px;
+        }
+        &--large {
+            margin-top: 32px;
+        }
+        &--xlarge {
+            margin-top: 48px;
+        }
+    }
+
+    &-trailer {
+        margin-bottom: 24px;
+        &--xsmall {
+            margin-bottom: 12px;
+        }
+        &--small {
+            margin-bottom: 16px;
+        }
+        &--large {
+            margin-bottom: 32px;
+        }
+        &--xlarge {
+            margin-bottom: 48px;
+        }
+    }
+
+    &-toleft {
+        margin-left: 24px;
+        &--xsmall {
+            margin-left: 12px;
+        }
+        &--small {
+            margin-left: 16px;
+        }
+        &--large {
+            margin-left: 32px;
+        }
+        &--xlarge {
+            margin-left: 48px;
+        }
+    }
+
+    &-toright {
+        margin-right: 24px;
+        &--xsmall {
+            margin-right: 12px;
+        }
+        &--small {
+            margin-right: 16px;
+        }
+        &--large {
+            margin-right: 32px;
+        }
+        &--xlarge {
+            margin-right: 48px;
+        }
+    }
+
+}

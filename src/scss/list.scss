@@ -1,0 +1,198 @@
+@import './settings.scss';
+$background-color: $color-very-dark-desaturated-blue;
+$color: $color-very-light-gray;
+
+
+$background-color-light: $color-very-light-gray;
+$color-light: $color-very-dark-grayish-blue; 
+
+
+
+.list {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 24px 0;
+    border-radius: 10px;
+    list-style-type: none;
+
+    &-wrapper {
+        background-color: $background-color;
+        border-radius: 10px;
+        margin-bottom: 24px;
+        width: 100%;
+        padding: 0;
+        box-shadow: 5px 25px 50px black;
+    }
+
+    .new-task {
+        border-radius: 10px;
+        height: 50px;
+        width: 100%;
+        background-color: $background-color; 
+        border: none;
+        color: $color;
+        font-size: $font-size;
+        font-family: $font-family;
+        padding: 24px 12px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box; 
+    }
+
+    .task {
+        min-height: 24px;
+        width: 100%; 
+        padding: 24px 12px;
+        border-bottom: 1px solid $color-very-dark-grayish-blue;
+        background-color: $background-color;
+        box-sizing: border-box; 
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        cursor: pointer;
+
+        &:first-child {
+            border-radius: 10px 10px 0 0;
+        }
+
+        &__label {
+            font-size: $font-size;
+            line-height: 24px;
+            padding: 0 50px;
+            color: $color;
+        }
+
+        &__toggle {
+            display: block;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            text-indent: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 50%;
+            border-width: 2px;
+
+            &:before {
+                content: '';
+                width: 24px;
+                height: 24px;
+                border: 2px solid $color-very-dark-grayish-blue;
+                border-radius: 50%;
+                background-color: transparent;
+                position: absolute;
+                top: 20px;
+                left: 16px;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                top: 24px;
+                left: 20px;
+                opacity: 0;      
+                background-image: url('./images/icon-check.svg');
+                background-repeat: no-repeat;
+                background-size: 16px 16px;
+                background-position: center center;
+                input[type=checkbox]:checked + & {
+                    opacity: 1;
+                }
+            }   
+        }
+
+        .task__remove-btn {        
+            position: absolute;
+            top: calc(50% - 10px);
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: url('./images/icon-cross.svg') no-repeat;
+            opacity: 0;
+
+            @media (max-width: $break-point) {
+                opacity: 1;
+            }
+        
+        }
+
+        &:hover .task__remove-btn {
+            opacity: 1;
+        }
+    }
+}
+
+input[type=checkbox]:not(:checked) + .task__toggle {
+    &:hover {
+        &:before {
+            background: $color-check-bg;
+            border: none;
+            width: 26px;
+            height: 26px;
+        }
+
+        &:after {
+            width: 24px;
+            height: 24px;
+            opacity: 1;
+            background-image: none;
+            background-color: $background-color;
+            border-radius: 50%;
+            top: 21px;
+            left: 17px;
+        }
+    }
+}
+
+
+input[type=checkbox]:checked + .task__toggle {
+
+    &:before {
+        background: $color-check-bg;
+        border: 2px solid $color-check-bg;
+    }
+
+    &:after {
+        opacity: 1;    
+    }
+}
+
+input[type=checkbox]:checked + .task__toggle + .task__label {
+    text-decoration: line-through;
+    color: $color;
+}
+
+.light-theme .list {
+    &-wrapper {
+        background-color: $background-color-light;
+    }
+
+    .new-task {
+        background-color: $background-color-light; 
+        color: $color-light;
+    }
+
+    .task {
+        background-color: $background-color-light;
+        &__label {
+            color: $color-light;
+        }  
+    }
+}
+
+.light-theme input[type=checkbox]:not(:checked) + .task__toggle {
+    &:hover {
+        &:after {
+            background-color: $background-color-light;
+        }
+    }
+}
+
+.light-theme input[type=checkbox]:checked + .task__toggle + .task__label {
+    color: $color-dark-grayish-blue;
+}
