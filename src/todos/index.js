@@ -28,7 +28,7 @@ export default class Todos {
     }
 
     newTaskOnInput(event) {
-        if (event.keyCode === 13) {
+        if ((event.keyCode && event.keyCode === 13) || !event.keyCode) {
             let text = event.target.value;
             event.target.blur();
             event.target.value = "";
