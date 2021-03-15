@@ -56,7 +56,6 @@ export default class Task {
 
     renderTask() {
         this._elem = Helpers.createElementFromHTML(template(this._id, this.text, this.isCompleted));
-        //this._removeButton = removeTaskButton;
     }
 
     clickCompleteTask() {

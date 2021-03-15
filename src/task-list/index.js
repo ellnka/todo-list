@@ -44,9 +44,9 @@ export default class TaskList {
 
         const task = new Task({text});
         this.tasks.push(task);
-        this._taskListElem.appendChild(task.elem);
-
+        this.reRenderTasks();
         this.saveTaskInLocalStorage();
+        this.taskListElem.dispatchEvent(new CustomEvent("completed"));
     }
 
     getUncompletedCount() {
@@ -66,12 +66,12 @@ export default class TaskList {
     removeTask(event) {
         this.tasks = this.tasks.filter ((task) => task.id !== event.detail.id);
         this.saveTaskInLocalStorage();
-        this.reRenderTasks(this.tasks);
+        this.reRenderTasks();
         this.taskListElem.dispatchEvent(new CustomEvent("completed"));
     }
 
-    setAllUncompleted() {
-        this.tasks.forEach(task => { task.isCompleted = false });
+    deleteAllCompleted() {
+        this.tasks = this.tasks.filter(task => !task.isCompleted);
         this.completeTask();
     }
 

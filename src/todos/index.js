@@ -28,14 +28,16 @@ export default class Todos {
     }
 
     newTaskOnInput(event) {
-        if ((event.keyCode && event.keyCode === 13) || !event.keyCode) {
+        if ((event.keyCode && event.keyCode === 13)) {
+            event.target.blur();       
+        } else if (!event.keyCode) {
             let text = event.target.value;
-            event.target.blur();
             event.target.value = "";
             this._taskList.addTaskToList(text);
-            
         }
     }
+
+    
 
     changeThemeOnClick() {
         document.body.classList.toggle(CLASSES.theme);

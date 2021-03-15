@@ -45,7 +45,7 @@ export default class Menu {
     }
 
     clearCompleted() {
-        this._taskList.setAllUncompleted();
+        this._taskList.deleteAllCompleted();
         this._taskList.reRenderTasks();
     }
 

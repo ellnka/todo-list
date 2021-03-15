@@ -1,15 +1,16 @@
 @import './settings.scss';
 
 .content {
-    width: $mobile-content-width;
-    max-width: $desktop-width;
-    min-width: $mobile-width;
+    min-width: $mobile-content-width;
+    width: 85%;
+    max-width: $mobile-width;
     margin-left: auto;
     margin-right: auto;
 
     padding: 64px 24px;
     
     @media (min-width: $break-point) {
+        max-width: $desktop-width;
         min-width: $desktop-content-width;
         width: $desktop-content-width;
     }
